@@ -1,12 +1,9 @@
 /**
- * 
+ *
  */
 package net.ambulando.pathfinder;
 
 import java.util.Iterator;
-
-import net.ambulando.pathfinder.grid.GridNode;
-import net.ambulando.pathfinder.nodes.Node;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,6 +11,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import net.ambulando.pathfinder.graph.Vertex;
+import net.ambulando.pathfinder.grid.GridNode;
+import net.ambulando.pathfinder.nodes.Node;
 
 /**
  * @author massi
@@ -23,10 +24,10 @@ import org.mockito.runners.MockitoJUnitRunner;
 public class PathTest {
 
     Path path;
-    
+
     @Mock
     Node node;
-    
+
     /**
      * @throws java.lang.Exception
      */
@@ -41,7 +42,7 @@ public class PathTest {
     @Test
     public void testAddNode() {
         path.addNode(node);
-        Iterator<Node> iterator = path.iterator();
+        final Iterator<Node> iterator = path.iterator();
         Assert.assertTrue(iterator.hasNext());
         iterator.next();
         Assert.assertFalse(iterator.hasNext());
@@ -54,7 +55,7 @@ public class PathTest {
     public void testIterator() {
         path.addNode(node);
         path.addNode(node);
-        Iterator<Node> iterator = path.iterator();
+        final Iterator<Node> iterator = path.iterator();
         Assert.assertTrue(iterator.hasNext());
         iterator.next();
         Assert.assertTrue(iterator.hasNext());
@@ -66,15 +67,36 @@ public class PathTest {
     public void testToString() {
         path.addNode(new GridNode(0, 0));
         path.addNode(new GridNode(10, 10));
-        Assert.assertEquals("Path([GridNode(0, 0), GridNode(10, 10)])", path.toString());
+        Assert.assertEquals("Path([(0, 0), (10, 10)])", path.toString());
     }
 
     @Test
     public void testReverse() {
         path.addNode(new GridNode(0, 0));
         path.addNode(new GridNode(10, 10));
-        Path reverse = path.reverse();
-        Assert.assertEquals("Path([GridNode(10, 10), GridNode(0, 0)])", reverse.toString());
+        final Path reverse = path.reverse();
+        Assert.assertEquals("Path([(10, 10), (0, 0)])", reverse.toString());
+    }
+
+    @Test
+    public void testGetPath() {
+        final Node a = new Vertex("a");
+        final Node b = new Vertex("b");
+        b.setPrevious(a);
+        final Node c = new Vertex("c");
+        c.setPrevious(b);
+        final Node d = new Vertex("d");
+        d.setPrevious(c);
+        final Path path = Path.getPath(a, d);
+        Assert.assertEquals("Path([a, b, c, d])", path.toString());
+    }
+
+    @Test
+    public void testGetPathEmpty() {
+        final Node a = new Vertex("a");
+        final Node b = new Vertex("b");
+        final Path path = Path.getPath(a, b);
+        Assert.assertEquals("Path([])", path.toString());
     }
 
 }

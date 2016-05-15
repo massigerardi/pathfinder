@@ -37,9 +37,7 @@ public class AStarPathfinder<T extends Node> implements Pathfinder<T> {
         start.setCost(0d);
         start.setCost(heuristic.calculateDistance(start, end));
         queue.add(start);
-        int c = 0;
         loop: while(!queue.isEmpty()) {
-           c++;
            final T node = queue.poll();
            visited.add(node);
            final List<T> neighbours = nodes.neighbours(node);
@@ -62,15 +60,8 @@ public class AStarPathfinder<T extends Node> implements Pathfinder<T> {
                }
            }
         }
-
-        System.out.print("   "+this+"\tfrom "+start+" to "+end+" took in "+c+"\t");
-        final Path path = new Path();
-        Node p = end;
-        while(p.getPrevious()!=null) {
-            path.addNode(p);
-            p = p.getPrevious();
-        }
-        return path.reverse();
+        return Path.getPath(start, end);
     }
+
 
 }

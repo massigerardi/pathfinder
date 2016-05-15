@@ -3,6 +3,7 @@
  */
 package net.ambulando.pathfinder;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,14 +35,14 @@ public class PathfinderOnGridTest {
         final DijkstraPathfinder<GridNode> dijkstraPathfinder = new DijkstraPathfinder<GridNode>(grid, new EuclideanHeuristic());
         final AStarPathfinder<GridNode> aStarPathfinder = new AStarPathfinder<GridNode>(grid, new EuclideanHeuristic());
         GridNode end = grid.getNode(3, 5);
-        checkPath(dijkstraPathfinder, start, end, null);
-        checkPath(aStarPathfinder, start, end, null);
+        checkPath(dijkstraPathfinder, start, end, 6);
+        checkPath(aStarPathfinder, start, end, 6);
         end = grid.getNode(10, 10);
-        checkPath(dijkstraPathfinder, start, end, null);
-        checkPath(aStarPathfinder, start, end, null);
+        checkPath(dijkstraPathfinder, start, end, 11);
+        checkPath(aStarPathfinder, start, end, 11);
         end = grid.getNode(10, 5);
-        checkPath(dijkstraPathfinder, start, end, null);
-        checkPath(aStarPathfinder, start, end, null);
+        checkPath(dijkstraPathfinder, start, end, 11);
+        checkPath(aStarPathfinder, start, end, 11);
     }
 
     /**
@@ -53,14 +54,14 @@ public class PathfinderOnGridTest {
         final DijkstraPathfinder<GridNode> dijkstraPathfinder = new DijkstraPathfinder<GridNode>(grid, new ManhattanHeuristic());
         final AStarPathfinder<GridNode> aStarPathfinder = new AStarPathfinder<GridNode>(grid, new ManhattanHeuristic());
         GridNode end = grid.getNode(3, 5);
-        checkPath(dijkstraPathfinder, start, end, null);
-        checkPath(aStarPathfinder, start, end, null);
+        checkPath(dijkstraPathfinder, start, end, 6);
+        checkPath(aStarPathfinder, start, end, 6);
         end = grid.getNode(10, 10);
-        checkPath(dijkstraPathfinder, start, end, null);
-        checkPath(aStarPathfinder, start, end, null);
+        checkPath(dijkstraPathfinder, start, end, 11);
+        checkPath(aStarPathfinder, start, end, 14);
         end = grid.getNode(10, 5);
-        checkPath(dijkstraPathfinder, start, end, null);
-        checkPath(aStarPathfinder, start, end, null);
+        checkPath(dijkstraPathfinder, start, end, 11);
+        checkPath(aStarPathfinder, start, end, 11);
     }
 
     /**
@@ -72,18 +73,18 @@ public class PathfinderOnGridTest {
         final DijkstraPathfinder<GridNode> dijkstraPathfinder = new DijkstraPathfinder<GridNode>(grid, new ChebyshevHeuristic());
         final AStarPathfinder<GridNode> aStarPathfinder = new AStarPathfinder<GridNode>(grid, new ChebyshevHeuristic());
         GridNode end = grid.getNode(3, 5);
-        checkPath(dijkstraPathfinder, start, end, null);
-        checkPath(aStarPathfinder, start, end, null);
+        checkPath(dijkstraPathfinder, start, end, 6);
+        checkPath(aStarPathfinder, start, end, 6);
         end = grid.getNode(10, 10);
-        checkPath(dijkstraPathfinder, start, end, null);
-        checkPath(aStarPathfinder, start, end, null);
+        checkPath(dijkstraPathfinder, start, end, 11);
+        checkPath(aStarPathfinder, start, end, 11);
         end = grid.getNode(10, 5);
-        checkPath(dijkstraPathfinder, start, end, null);
-        checkPath(aStarPathfinder, start, end, null);
+        checkPath(dijkstraPathfinder, start, end, 11);
+        checkPath(aStarPathfinder, start, end, 11);
     }
 
-    private void checkPath(final Pathfinder<GridNode> pathfinder, final GridNode start, final GridNode end, final Path expectedPath) {
+    private void checkPath(final Pathfinder<GridNode> pathfinder, final GridNode start, final GridNode end, final int expectedPath) {
         final Path result = pathfinder.findPath(start, end);
-        System.out.println(" found "+result.size()+" nodes: "+result);
+        Assert.assertEquals(expectedPath, result.size());
     }
 }

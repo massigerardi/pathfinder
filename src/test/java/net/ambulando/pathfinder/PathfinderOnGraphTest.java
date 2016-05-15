@@ -1,14 +1,15 @@
 /**
- * 
+ *
  */
 package net.ambulando.pathfinder;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 import net.ambulando.pathfinder.graph.Graph;
 import net.ambulando.pathfinder.graph.GraphHeuristic;
 import net.ambulando.pathfinder.graph.Vertex;
-
-import org.junit.Before;
-import org.junit.Test;
 
 /**
  * @author massi
@@ -26,7 +27,7 @@ public class PathfinderOnGraphTest {
     Vertex g = new Vertex("g");
     Vertex h = new Vertex("h");
     Vertex i = new Vertex("i");
-    
+
     @Before
     public void setUp() {
         graph = new Graph();
@@ -41,31 +42,31 @@ public class PathfinderOnGraphTest {
         graph.addEdge(e, h);
         graph.addEdge(f, h);
     }
-    
+
     /**
      * Test method for {@link net.ambulando.pathfinder.Pathfinder#findPath(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
      */
     @Test
     public void testPathfinderWithEuclideanHeuristic() {
-        DijkstraPathfinder<Vertex> dijkstraPathfinder = new DijkstraPathfinder<Vertex>(graph, new GraphHeuristic());
-        AStarPathfinder<Vertex> aStarPathfinder = new AStarPathfinder<Vertex>(graph, new GraphHeuristic());
-        Vertex start = a;
+        final DijkstraPathfinder<Vertex> dijkstraPathfinder = new DijkstraPathfinder<Vertex>(graph, new GraphHeuristic());
+        final AStarPathfinder<Vertex> aStarPathfinder = new AStarPathfinder<Vertex>(graph, new GraphHeuristic());
+        final Vertex start = a;
         Vertex end = b;
-        checkPath(dijkstraPathfinder, start, end, null);
-        checkPath(aStarPathfinder, start, end, null);
+        checkPath(dijkstraPathfinder, start, end, 2);
+        checkPath(aStarPathfinder, start, end, 2);
         end = c;
-        checkPath(dijkstraPathfinder, start, end, null);
-        checkPath(aStarPathfinder, start, end, null);
+        checkPath(dijkstraPathfinder, start, end, 3);
+        checkPath(aStarPathfinder, start, end, 3);
         end = h;
-        checkPath(dijkstraPathfinder, start, end, null);
-        checkPath(aStarPathfinder, start, end, null);
+        checkPath(dijkstraPathfinder, start, end, 5);
+        checkPath(aStarPathfinder, start, end, 5);
         end = i;
-        checkPath(dijkstraPathfinder, start, end, null);
-        checkPath(aStarPathfinder, start, end, null);
+        checkPath(dijkstraPathfinder, start, end, 0);
+        checkPath(aStarPathfinder, start, end, 0);
     }
 
-    private void checkPath(Pathfinder<Vertex> pathfinder, Vertex start, Vertex end, Path expectedPath) {
-        Path result = pathfinder.findPath(start, end);
-        System.out.println(" found "+result.size()+" nodes: "+result);
+    private void checkPath(final Pathfinder<Vertex> pathfinder, final Vertex start, final Vertex end, final int expectedPath) {
+        final Path result = pathfinder.findPath(start, end);
+        Assert.assertEquals(expectedPath, result.size());
     }
 }
