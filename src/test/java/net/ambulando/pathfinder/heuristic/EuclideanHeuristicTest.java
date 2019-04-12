@@ -1,6 +1,3 @@
-/**
- *
- */
 package net.ambulando.pathfinder.heuristic;
 
 import org.junit.Assert;
@@ -37,7 +34,7 @@ public class EuclideanHeuristicTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}.
      */
     @Test
     public void testCalculateDistanceZero() {
@@ -48,7 +45,7 @@ public class EuclideanHeuristicTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}.
      */
     @Test
     public void testCalculateDistanceExact() {
@@ -59,7 +56,7 @@ public class EuclideanHeuristicTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}.
      */
     @Test
     public void testCalculateDistanceDiagonal() {
@@ -70,7 +67,7 @@ public class EuclideanHeuristicTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}.
      */
     @Test
     public void testCalculateDistanceMinimum() {
@@ -82,7 +79,7 @@ public class EuclideanHeuristicTest {
 
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}.
      */
     @Test
     public void testCalculateDistanceExactDouble() {
@@ -93,7 +90,7 @@ public class EuclideanHeuristicTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}.
      */
     @Test
     public void testCalculateDistanceExactOtherWay() {

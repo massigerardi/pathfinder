@@ -1,6 +1,3 @@
-/**
- *
- */
 package net.ambulando.pathfinder;
 
 import java.util.Iterator;
@@ -28,11 +25,8 @@ public class PathTest {
     @Mock
     Node node;
 
-    /**
-     * @throws java.lang.Exception
-     */
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         path = new Path();
     }
 
@@ -67,7 +61,7 @@ public class PathTest {
     public void testToString() {
         path.addNode(new GridNode(0, 0));
         path.addNode(new GridNode(10, 10));
-        Assert.assertEquals("Path([(0, 0), (10, 10)])", path.toString());
+        Assert.assertEquals("[(0,0)(10,10)]", path.toString());
     }
 
     @Test
@@ -75,7 +69,7 @@ public class PathTest {
         path.addNode(new GridNode(0, 0));
         path.addNode(new GridNode(10, 10));
         final Path reverse = path.reverse();
-        Assert.assertEquals("Path([(10, 10), (0, 0)])", reverse.toString());
+        Assert.assertEquals("[(10,10)(0,0)]", reverse.toString());
     }
 
     @Test
@@ -88,7 +82,7 @@ public class PathTest {
         final Node d = new Vertex("d");
         d.setPrevious(c);
         final Path path = Path.getPath(a, d);
-        Assert.assertEquals("Path([a, b, c, d])", path.toString());
+        Assert.assertEquals("[abcd]", path.toString());
     }
 
     @Test
@@ -96,7 +90,7 @@ public class PathTest {
         final Node a = new Vertex("a");
         final Node b = new Vertex("b");
         final Path path = Path.getPath(a, b);
-        Assert.assertEquals("Path([])", path.toString());
+        Assert.assertEquals("[]", path.toString());
     }
 
 }

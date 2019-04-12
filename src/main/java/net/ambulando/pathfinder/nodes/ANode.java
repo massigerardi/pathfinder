@@ -10,9 +10,14 @@ public abstract class ANode implements Node {
     private Node previous;
     
     @Setter
-    private Double cost;
+    private double cost;
 
     @Setter
-    private Double estimatedCost;
+    private double estimatedCost;
 
+
+    @Override
+    public int compareTo(Node that) {
+        return Double.compare(this.getCost(), that.getCost());
+    }
 }

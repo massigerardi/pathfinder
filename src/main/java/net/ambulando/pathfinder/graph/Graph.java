@@ -1,6 +1,3 @@
-/**
- * 
- */
 package net.ambulando.pathfinder.graph;
 
 import java.util.List;
@@ -34,6 +31,9 @@ public class Graph extends Nodes<Vertex>{
     public List<Vertex> neighbours(Vertex node) {
         return node.getNeighbours();
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return getNodes().toString();
+    }
 }

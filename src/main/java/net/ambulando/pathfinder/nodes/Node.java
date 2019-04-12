@@ -1,6 +1,3 @@
-/**
- * 
- */
 package net.ambulando.pathfinder.nodes;
 
 
@@ -8,15 +5,17 @@ package net.ambulando.pathfinder.nodes;
  * @author massi
  * 
  */
-public interface Node {
+public interface Node extends Comparable<Node> {
 
-    Double getCost();
+    String getName();
+
+    double getCost();
     
-    void setCost(Double c);
+    void setCost(double c);
     
-    Double getEstimatedCost();
+    double getEstimatedCost();
     
-    void setEstimatedCost(Double c);
+    void setEstimatedCost(double c);
     
     void setPrevious(Node node);
     

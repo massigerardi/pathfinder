@@ -1,6 +1,3 @@
-/**
- *
- */
 package net.ambulando.pathfinder.heuristic;
 
 import org.junit.Assert;
@@ -28,11 +25,9 @@ public class ManhattanHeuristicTest {
     GridNode start;
     @Mock
     GridNode end;
-    /**
-     * @throws java.lang.Exception
-     */
+
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         defaultHeuristic = new ManhattanHeuristic();
         halfDistanceHeuristic = new ManhattanHeuristic(0.5);
         doubleDistanceHeuristic = new ManhattanHeuristic(2.0);
@@ -41,7 +36,7 @@ public class ManhattanHeuristicTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.ManhattanHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}..
      */
     @Test
     public void testCalculateDistanceZero() {
@@ -53,7 +48,7 @@ public class ManhattanHeuristicTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.ManhattanHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}..
      */
     @Test
     public void testCalculateDistanceMinimum() {
@@ -65,7 +60,7 @@ public class ManhattanHeuristicTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.ManhattanHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}..
      */
     @Test
     public void testCalculateDistanceDiagonal() {
@@ -77,7 +72,7 @@ public class ManhattanHeuristicTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.ManhattanHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}..
      */
     @Test
     public void testCalculateDistanceExact() {
@@ -89,7 +84,7 @@ public class ManhattanHeuristicTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.ManhattanHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}..
      */
     @Test
     public void testCalculateDistanceTwo() {
@@ -101,7 +96,7 @@ public class ManhattanHeuristicTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.ManhattanHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}..
      */
     @Test
     public void testCalculateDistanceExactDouble() {
@@ -113,7 +108,7 @@ public class ManhattanHeuristicTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.ManhattanHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}..
      */
     @Test
     public void testCalculateDistanceExactOtherWay() {

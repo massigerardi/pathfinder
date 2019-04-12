@@ -1,6 +1,3 @@
-/**
- *
- */
 package net.ambulando.pathfinder.graph;
 
 import java.util.List;

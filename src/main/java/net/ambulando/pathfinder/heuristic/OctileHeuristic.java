@@ -1,6 +1,3 @@
-/**
- *
- */
 package net.ambulando.pathfinder.heuristic;
 
 import lombok.Getter;

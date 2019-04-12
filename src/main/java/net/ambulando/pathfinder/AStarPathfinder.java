@@ -1,6 +1,3 @@
-/**
- *
- */
 package net.ambulando.pathfinder;
 
 import java.util.ArrayList;
@@ -19,20 +16,11 @@ import net.ambulando.pathfinder.nodes.Nodes;
  *
  */
 @AllArgsConstructor
-@ToString(includeFieldNames=false, of= {"heuristic"})
 public class AStarPathfinder<T extends Node> implements Pathfinder<T> {
 
-    Nodes<T> nodes;
-
-    Heuristic<T> heuristic;
-
-    public Path findPath(final T start, final T end) {
-        final List<Node> visited = new ArrayList<Node>();
-        final PriorityQueue<T> queue = new PriorityQueue<T>(new Comparator<T>() {
-            public int compare(final T o1, final T o2) {
-                return o1.getEstimatedCost().compareTo(o2.getEstimatedCost());
-            }
-        });
+    public Path findPath(final T start, final T end, Nodes<T> nodes, Heuristic<T> heuristic) {
+        final List<Node> visited = new ArrayList<>();
+        final PriorityQueue<T> queue = new PriorityQueue<>();
 
         start.setCost(0d);
         start.setCost(heuristic.calculateDistance(start, end));
@@ -61,6 +49,11 @@ public class AStarPathfinder<T extends Node> implements Pathfinder<T> {
            }
         }
         return Path.getPath(start, end);
+    }
+
+    @Override
+    public String getName() {
+        return "AStar";
     }
 
 

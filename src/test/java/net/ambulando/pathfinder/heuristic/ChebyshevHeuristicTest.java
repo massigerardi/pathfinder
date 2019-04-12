@@ -1,6 +1,3 @@
-/**
- *
- */
 package net.ambulando.pathfinder.heuristic;
 
 import org.junit.Assert;
@@ -26,18 +23,16 @@ public class ChebyshevHeuristicTest {
     GridNode start;
     @Mock
     GridNode end;
-    /**
-     * @throws java.lang.Exception
-     */
+
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         defaultHeuristic = new ChebyshevHeuristic();
         Mockito.when(start.getX()).thenReturn(1);
         Mockito.when(start.getY()).thenReturn(1);
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.ChebyshevHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}.
      */
     @Test
     public void testCalculateDistanceZero() {
@@ -47,7 +42,7 @@ public class ChebyshevHeuristicTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.ChebyshevHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}.
      */
     @Test
     public void testCalculateDistanceExact() {
@@ -57,7 +52,7 @@ public class ChebyshevHeuristicTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.ChebyshevHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}.
      */
     @Test
     public void testCalculateDistanceTwo() {
@@ -67,7 +62,7 @@ public class ChebyshevHeuristicTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.ChebyshevHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}.
      */
     @Test
     public void testCalculateDistanceExactDouble() {
@@ -77,7 +72,7 @@ public class ChebyshevHeuristicTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.heuristic.EuclideanHeuristic#calculateDistance(net.ambulando.pathfinder.nodes.Node, net.ambulando.pathfinder.nodes.Node)}.
+     * Test method for {@link net.ambulando.pathfinder.heuristic.ChebyshevHeuristic#calculateDistance(net.ambulando.pathfinder.grid.GridNode, net.ambulando.pathfinder.grid.GridNode)}.
      */
     @Test
     public void testCalculateDistanceExactOtherWay() {

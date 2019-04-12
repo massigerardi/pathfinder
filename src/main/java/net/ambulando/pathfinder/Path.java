@@ -1,10 +1,8 @@
-/**
- *
- */
 package net.ambulando.pathfinder;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.google.common.collect.Lists;
 
@@ -19,7 +17,6 @@ import net.ambulando.pathfinder.nodes.Node;
  */
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(includeFieldNames=false)
 public class Path implements Iterable<Node>{
 
     private List<Node> nodes = Lists.newArrayList();
@@ -48,7 +45,7 @@ public class Path implements Iterable<Node>{
     public static <T extends Node> Path getPath(final T start, final T end) {
         final Path path = new Path();
         Node p = end;
-        while(p.getPrevious()!=null) {
+        while(p.getPrevious() !=null) {
             path.addNode(p);
             p = p.getPrevious();
         }
@@ -58,4 +55,8 @@ public class Path implements Iterable<Node>{
         return path.reverse();
     }
 
- }
+    @Override
+    public String toString() {
+        return "["+nodes.stream().map(Object::toString).collect(Collectors.joining())+"]";
+    }
+}

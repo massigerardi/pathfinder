@@ -18,6 +18,12 @@ public class GridNode extends ANode {
 
     @Override
     public String toString() {
-        return String.format("(%s, %s)", x, y);
+        return String.format("(%s,%s)", x, y);
+    }
+
+
+    @Override
+    public String getName() {
+        return toString();
     }
 }

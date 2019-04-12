@@ -1,6 +1,3 @@
-/**
- * 
- */
 package net.ambulando.pathfinder.grid;
 
 
@@ -17,18 +14,15 @@ import org.junit.Test;
  */
 public class GridTest {
 
-    Grid grid;
+    private Grid grid;
     
-    /**
-     * @throws java.lang.Exception
-     */
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         grid = new Grid(0, 0, 10, 10);
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.nodes.Grid#contains(java.lang.Integer, java.lang.Integer)}.
+     * Test method for {@link net.ambulando.pathfinder.grid.Grid#contains(java.lang.Integer, java.lang.Integer)}.
      */
     @Test
     public void testContains() {
@@ -36,7 +30,7 @@ public class GridTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.nodes.Grid#contains(java.lang.Integer, java.lang.Integer)}.
+     * Test method for {@link net.ambulando.pathfinder.grid.Grid#contains(java.lang.Integer, java.lang.Integer)}.
      */
     @Test
     public void testContainsNot() {
@@ -47,7 +41,7 @@ public class GridTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.nodes.Grid#contains(java.lang.Integer, java.lang.Integer)}.
+     * Test method for {@link net.ambulando.pathfinder.grid.Grid#contains(java.lang.Integer, java.lang.Integer)}.
      */
     @Test
     public void testContainsOrigin() {
@@ -55,7 +49,7 @@ public class GridTest {
     }
 
     /**
-     * Test method for {@link net.ambulando.pathfinder.nodes.Grid#contains(java.lang.Integer, java.lang.Integer)}.
+     * Test method for {@link net.ambulando.pathfinder.grid.Grid#contains(java.lang.Integer, java.lang.Integer)}.
      */
     @Test
     public void testContainsLowerRight() {
@@ -63,7 +57,7 @@ public class GridTest {
     }
     
     /**
-     * Test method for {@link net.ambulando.pathfinder.nodes.Grid#size()}.
+     * Test method for {@link net.ambulando.pathfinder.grid.Grid#size()}.
      */
     @Test
     public void testSize() {
@@ -71,7 +65,7 @@ public class GridTest {
     }
     
     /**
-     * Test method for {@link net.ambulando.pathfinder.nodes.Grid#iterator()}.
+     * Test method for {@link net.ambulando.pathfinder.grid.Grid#iterator()}.
      */
     @Test
     public void testIterator() {
@@ -102,7 +96,6 @@ public class GridTest {
     private void checkNode(int x, int y, int expected) {
         List<GridNode> nodes = grid.neighbours(new GridNode(x, y));
         Assert.assertEquals(expected, nodes.size());
-        System.out.println(nodes);
     }
 
 }
