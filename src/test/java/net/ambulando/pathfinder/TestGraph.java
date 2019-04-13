@@ -22,11 +22,11 @@ public class TestGraph implements TestConfiguration {
   /*
         d   i
         |
-    a - b - c - f
-        |   |   |
-        g --+   |
-        |       |
-        e - h --+
+    a - b - c - f - h
+        |   |
+        g --+
+        |
+        e
    */
 
   public TestGraph() {
@@ -47,7 +47,6 @@ public class TestGraph implements TestConfiguration {
     nodes.addEdge(C, F);
     nodes.addEdge(C, G);
     nodes.addEdge(E, G);
-    nodes.addEdge(E, H);
     nodes.addEdge(F, H);
     cases.add(TestCase.builder().start(A).end(B).expectedPath("[ab]").build());
     cases.add(TestCase.builder().start(A).end(C).expectedPath("[abc]").build());

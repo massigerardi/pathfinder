@@ -15,22 +15,22 @@ public abstract class PathfinderTest {
     public abstract TestConfiguration getConfiguration();
 
     @Test
-    public void testDijkstraPathfinderA2B() {
+    public void testPathfinderZero() {
         checkPath(getPathfinder(), getConfiguration().getCases().get(0));
     }
 
     @Test
-    public void testDijkstraPathfinderA2C() {
+    public void testPathfinderOne() {
         checkPath(getPathfinder(), getConfiguration().getCases().get(1));
     }
 
     @Test
-    public void testDijkstraPathfinderA2H() {
+    public void testPathfinderTwo() {
         checkPath(getPathfinder(), getConfiguration().getCases().get(2));
     }
 
     @Test
-    public void testDijkstraPathfinderA2I() {
+    public void testPathfinderThree() {
         checkPath(getPathfinder(), getConfiguration().getCases().get(3));
     }
 

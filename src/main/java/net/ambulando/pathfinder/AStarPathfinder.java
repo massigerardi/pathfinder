@@ -1,15 +1,14 @@
 package net.ambulando.pathfinder;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.PriorityQueue;
-
 import lombok.AllArgsConstructor;
-import lombok.ToString;
 import net.ambulando.pathfinder.heuristic.Heuristic;
 import net.ambulando.pathfinder.nodes.Node;
 import net.ambulando.pathfinder.nodes.Nodes;
+
+import java.util.List;
+import java.util.PriorityQueue;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 /**
  * @author massi
@@ -19,35 +18,35 @@ import net.ambulando.pathfinder.nodes.Nodes;
 public class AStarPathfinder<T extends Node> implements Pathfinder<T> {
 
     public Path findPath(final T start, final T end, Nodes<T> nodes, Heuristic<T> heuristic) {
-        final List<Node> visited = new ArrayList<>();
-        final PriorityQueue<T> queue = new PriorityQueue<>();
-
+        List<T> visited = newArrayList();
+        PriorityQueue<T> visiting = new PriorityQueue<>((n1, n2) -> Double.compare(n1.getEstimatedCost(), n2.getEstimatedCost()));
         start.setCost(0d);
-        start.setCost(heuristic.calculateDistance(start, end));
-        queue.add(start);
-        loop: while(!queue.isEmpty()) {
-           final T node = queue.poll();
-           visited.add(node);
-           final List<T> neighbours = nodes.neighbours(node);
-           for (final T neighbour : neighbours) {
-               if (visited.contains(neighbour)) {
-                   continue;
-               }
-               final Double estimatedCost = node.getCost()+heuristic.calculateDistance(node, neighbour);
-               if (!queue.contains(neighbour)
-                       || estimatedCost < neighbour.getCost()) {
-                   neighbour.setPrevious(node);
-                   if (neighbour.equals(end)) {
-                       break loop;
-                   }
-                   neighbour.setCost(estimatedCost);
-                   neighbour.setEstimatedCost(estimatedCost+heuristic.calculateDistance(neighbour, end));
-                   if (!queue.contains(neighbour)) {
-                       queue.add(neighbour);
-                   }
-               }
-           }
+        start.setEstimatedCost(heuristic.calculateDistance(start, end));
+
+        visiting.add(start);
+
+        while (!visiting.isEmpty()) {
+            T current = visiting.poll();
+            if (current == end) {
+                return Path.getPath(start, end);
+            }
+            visited.add(current);
+            for (T n : nodes.neighbours(current)) {
+                if (visited.contains(n)) {
+                    continue;
+                }
+                double cost = current.getCost()+heuristic.calculateDistance(current, n);
+                if (!visiting.contains(n)) {
+                    visiting.add(n);
+                } else if (cost > n.getCost()) {
+                    continue;
+                }
+                n.setPrevious(current);
+                n.setCost(cost);
+                n.setEstimatedCost(n.getCost() + heuristic.calculateDistance(n, end));
+            }
         }
+
         return Path.getPath(start, end);
     }
 

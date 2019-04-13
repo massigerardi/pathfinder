@@ -17,7 +17,7 @@ public class GraphHeuristic implements Heuristic<Vertex> {
         if (start.near(end)) {
             return 1d;
         }
-        return MAX_DISTANCE;
+        return start.getCost() + end.getCost() + MAX_DISTANCE;
     }
 
 }
