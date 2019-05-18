@@ -13,22 +13,6 @@ import static com.google.common.collect.Lists.newArrayList;
 @Getter
 public class TestGridAStarEuclidean implements TestConfiguration {
 
-  /*
-      10 - . . . . . . . . . . .
-         - . . . . . . . E . . .
-       8 - . . . . . . . . . . .
-         - . . . . . . . . . . .
-       6 - . . . . . . E . . . .
-         - . . . E E . . . . . .
-       4 - . . . . . . . . . . .
-         - . . . . . . . . . . .
-       2 - . . . . . . . . . . .
-         - . . . . . . . . . . .
-       0 - S . . . . . . . . . .
-           | | | | | | | | | | |
-           0   2   4   6   8   10
-
-   */
   private Grid nodes = new Grid(0,0,10,10);
 
   private Heuristic<GridNode> heuristic = new EuclideanHeuristic();
